@@ -11,4 +11,6 @@ Useless Content Creator (UCC) is a fake content generator, designed to hide usef
 
 `cd UselessContentCreator`
 
+`mkdir output`
+
 `python3 script.py`
