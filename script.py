@@ -32,9 +32,8 @@ def main():
 	Select:
 		1- generate random text file
 		2- generate several text files
----------------------------------------------------------------
 		3- generate random html file
-
+===============================================================
 		Q- Quit
 >> """)
 	if select == "1":
@@ -100,5 +99,7 @@ def main():
 ######################################
 
 clear()
-print(f"Available file names: {len(data.names)}")
+print(f"Available text file names: {len(data.names)}.")
+print(f"Available html file names: {len(data.site_titles)}.")
+print(f"Available words: {len(data.words)}.")
 main()
