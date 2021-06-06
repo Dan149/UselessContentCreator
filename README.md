@@ -4,4 +4,11 @@
 [![OS](https://img.shields.io/badge/Tested%20on-Linux%20|%20Windows%20|%20Android%20Termux-purple.svg)](https://www.linux.com/what-is-linux/)
 <a href="https://twitter.com/daniel_fkv"><img src="https://img.shields.io/twitter/follow/daniel_fkv?label=Follow&style=social" /></a>
 
-Useless Content Creator (UCC) is a fake content generator to hide useful data between bunch of fake data.
+Useless Content Creator (UCC) is a fake content generator, designed to hide useful data between bunchs of fake data.
+
+### Installation
+`git clone https://github.com/UselessContentCreator`
+
+`cd UselessContentCreator`
+
+`python3 script.py`
