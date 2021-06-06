@@ -7,10 +7,10 @@
 Useless Content Creator (UCC) is a fake content generator, designed to hide useful data between bunchs of fake data.
 
 ### Installation
-`git clone https://github.com/Dan149/UselessContentCreator`
+1- `git clone https://github.com/Dan149/UselessContentCreator`
 
-`cd UselessContentCreator`
+2- `cd UselessContentCreator`
 
-`mkdir output`
+3- `mkdir output`
 
-`python3 script.py`
+4- `python3 script.py`
