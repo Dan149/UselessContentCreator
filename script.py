@@ -6,10 +6,7 @@ import random
 import secrets
 import string
 import pathlib
-import reportlab.lib.colors
-from reportlab.lib.units import inch
-from reportlab.pdfgen.canvas import Canvas
-from reportlab.lib.pagesizes import A4
+from fpdf import FPDF
 
 def clear():
 	if os.name == "nt":
@@ -42,6 +39,7 @@ def main():
 		5- generate random text file 	   (without words)
 		6- generate several text files	   (without words)
 		7- generate random html file       (without words)
+		8- generate random pdf file        (without words)
 ===============================================================
 		C- Credits
 		Q- Quit
@@ -52,7 +50,7 @@ def main():
 			f = open("output/" + data.names[random.randint(0, len(data.names))] + ".txt", "w+")
 			f.write(data.flush_doc_content())
 			f.close()
-			print("File generated.")
+			print(" File generated.")
 			time.sleep(1.5)
 			clear()
 		except:
@@ -101,13 +99,16 @@ def main():
 		clear()
 		main()
 	elif select == "4":
-		doc_content = ''.join(secrets.choice(data.words) + " " for i in range(random.randint(3, 10)))
-		print("\nGenerating file...")
-		canvas = Canvas("output/" + secrets.choice(data.names) + ".pdf", pagesize=A4)
-		canvas.setFont(secrets.choice(data.fonts), random.randint(6, 18))
-		canvas.setFillColor(secrets.choice(data.colors))
-		canvas.drawString(1 * inch, 10 * inch, doc_content)
-		canvas.save()
+		print("\nGenerating the file...")
+		pdf = FPDF()
+		pdf.add_page()
+		pdf.set_font(secrets.choice(data.fonts), size = random.randint(5, 8))
+		line = 1
+		for x in range(random.randint(20, 40)):
+			doc_content = ''.join(secrets.choice(data.words) + " " for i in range(random.randint(10, 15)))
+			pdf.cell(200, 10, txt = doc_content, ln = line, align = 'C')
+			line = line + 1
+		pdf.output("output/" + secrets.choice(data.names) + ".pdf") 
 		print("File generated.")
 		time.sleep(1.5)
 		clear()
@@ -162,6 +163,21 @@ def main():
 			print("\nGenerating file...")
 			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_alternative(), None))
 		f.close()
+		print("File generated.")
+		time.sleep(1.5)
+		clear()
+		main()
+	elif select == "8":
+		print("\nGenerating the file...")
+		pdf = FPDF()
+		pdf.add_page()
+		pdf.set_font(secrets.choice(data.fonts), size = random.randint(5, 8))
+		line = 1
+		for x in range(random.randint(20, 40)):
+			doc_content = ''.join(secrets.choice(string.printable) for i in range(random.randint(40, 65)))
+			pdf.cell(200, 10, txt = doc_content, ln = line, align = 'C')
+			line = line + 1
+		pdf.output("output/" + secrets.choice(data.names) + ".pdf")
 		print("File generated.")
 		time.sleep(1.5)
 		clear()
