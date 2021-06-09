@@ -6,6 +6,7 @@ import random
 import secrets
 import string
 import pathlib
+import json
 from fpdf import FPDF
 
 def clear():
@@ -23,24 +24,25 @@ def exit():
 
 def main():
 	select = input("""
-		 __    __    ______   ______ 
-		|  |  |  |  /      | /      |
-		|  |  |  | |  ,----'|  ,----'
-		|  |  |  | |  |     |  |     
-		|  `--'  | |  `----.|  `----.
-		 \\______/   \\______| \\______|
+		 __    __          ______          ______ 
+		|  |  |  |        /      |        /      |
+		|  |  |  |       |  ,----'       |  ,----'
+		|  |  |  |       |  |            |  |     
+		|  `--'  |       |  `----.       |  `----.
+		 \\______/seless   \\______|ontent  \\______|reator
                              
 	Select:
-		1- generate random text file       (with words)
-		2- generate several text files     (with words)
-		3- generate random html file       (with words)
-		4- generate random pdf file        (with words)
+		1- generate random text file         (with words)
+		2- generate several text files       (with words)
+		3- generate random html file         (with words)
+		4- generate random pdf file          (with words)
+		5- generate random json (list) file  (with words)
 			------------------------------
-		5- generate random text file 	   (without words)
-		6- generate several text files	   (without words)
-		7- generate random html file       (without words)
-		8- generate random pdf file        (without words)
-===============================================================
+		6- generate random text file 	     (without words)
+		7- generate several text files	     (without words)
+		8- generate random html file         (without words)
+		9- generate random pdf file          (without words)
+=========================================================================
 		C- Credits
 		Q- Quit
 >> """)
@@ -114,9 +116,22 @@ def main():
 		clear()
 		main()
 	elif select == "5":
+		print("Generating the file...")
+		doc = []
+		for x in range(random.randint(200, 10000)):
+			doc.append(secrets.choice(data.words))
+		f = open("output/" + secrets.choice(data.names) + ".json", "w+")
+		json_string = json.dumps(doc)
+		f.write(json_string)
+		f.close()
+		print("File generated.")
+		time.sleep(1.5)
+		clear()
+		main()
+	elif select == "6":
 		print("\nGenerating the file...")
 		try:
-			f = open("output/" + data.names[random.randint(0, len(data.names))] + ".txt", "w+")
+			f = open("output/" + secrets.choice(data.names) + ".txt", "w+")
 			f.write(data.flush_alternative())
 			f.close()
 			print("File generated.")
@@ -126,7 +141,7 @@ def main():
 			clear()
 			print("[CRITICAL]: failed to generate file.")
 		main()
-	elif select == "6":
+	elif select == "7":
 		try:
 			amount = int(input(f"\nChose the amount of files (max:{len(data.names)}): "))
 		except:
@@ -152,7 +167,7 @@ def main():
 		time.sleep(1.5)
 		clear()
 		main()
-	elif select == "7":
+	elif select == "8":
 		f = open("output/" + secrets.choice(data.site_titles) + ".html", "w+")
 		ask = input("\nInclude a JS script ? [y/N]\n>> ")
 		if ask == "y" or ask == "Y" or ask == "yes" or ask == "YES" or ask == "Yes":
@@ -167,7 +182,7 @@ def main():
 		time.sleep(1.5)
 		clear()
 		main()
-	elif select == "8":
+	elif select == "9":
 		print("\nGenerating the file...")
 		pdf = FPDF()
 		pdf.add_page()
