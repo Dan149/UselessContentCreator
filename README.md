@@ -14,8 +14,6 @@ Useless Content Creator (UCC) is a fake content generator, it can generate text,
 
 3- `pip3 install -r requirements.txt`
 
-4- `mkdir output`
-
 ### Launch
 
  `python3 script.py`
