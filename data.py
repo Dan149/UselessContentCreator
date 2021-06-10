@@ -15,33 +15,37 @@ def flush_alternative():
     return doc_content
 
 def html_template(title, content, script):
-	if script != None:
-		html_doc = """<!DOCTYPE html>
+    colors = ["blue", "skyblue", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "green", "darkgreen", "darkred", "darkblue", "orange", "grey", "darkorange", "darkgrey", "indianred", "darkolivegreen", "greenyellow", "limegreen", "seagreen", "forestgreen"]
+    fonts = ["Times-Roman", "Comic Sans ms", "Helvetica", "Arial", "dubai", "Algerian", "Broadway", "Carlito", "Cantarell", "ahori"]
+    color = secrets.choice(colors)
+    font = secrets.choice(fonts)
+    if script != None:
+        html_doc = """<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>{}</title>
 </head>
-<body>
+<body style='color:{}; font-family:{};'>
 <p>
 {}
 </p>
 <script>{}</script>
 </body>
-</html>""".format(title, content, script)
+</html>""".format(title, color, font, content, script)
 
-	else:
-		html_doc = """<!DOCTYPE html>
+    else:
+        html_doc = """<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>{}</title>
 </head>
-<body>
+<body style='color:{}; font-family:{};'>
 {}
 </body>
-</html>""".format(title, content)
-	return html_doc
+</html>""".format(title, color, font, content)
+    return html_doc
 
 # the 'words' list below come from the 'english-words'
 
