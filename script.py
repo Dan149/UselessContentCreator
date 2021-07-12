@@ -23,7 +23,6 @@ def exit():
 	quit()
 
 def main():
-	html_doc_ver = [1, 2]
 	select = input("""
 		 __    __          ______          ______ 
 		|  |  |  |        /      |        /      |
@@ -92,10 +91,10 @@ def main():
 		if ask == "y" or ask == "Y" or ask == "yes" or ask == "YES" or ask == "Yes":
 			script = input("Enter a JS script: ")
 			print("\nGenerating file...")
-			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_doc_content(), script, 1))
+			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_doc_content(), script, random.randint(1,2)))
 		else:
 			print("\nGenerating file...")
-			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_doc_content(), None, secrets.choice(html_doc_ver)))
+			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_doc_content(), None, random.randint(1,2)))
 		f.close()
 		print("File generated.")
 		time.sleep(1.5)
@@ -174,10 +173,10 @@ def main():
 		if ask == "y" or ask == "Y" or ask == "yes" or ask == "YES" or ask == "Yes":
 			script = input("Enter a JS script: ")
 			print("\nGenerating file...")
-			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_alternative(), script, secrets.choice(html_doc_ver)))
+			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_alternative(), script, random.randint(1,2)))
 		else:
 			print("\nGenerating file...")
-			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_alternative(), None, secrets.choice(html_doc_ver)))
+			f.write(data.html_template(secrets.choice(data.site_titles), data.flush_alternative(), None, random.randint(1,2)))
 		f.close()
 		print("File generated.")
 		time.sleep(1.5)
